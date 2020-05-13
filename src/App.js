@@ -7,7 +7,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			newItem: "",
-			list: []
+			list: [{id: 1589406348554, value: "Practice React for 1 hour", isDone: false}]
 		};
 	}
 
@@ -23,7 +23,6 @@ class App extends React.Component {
 			//Getting list array from the object
 			const list = [...this.state.list];
 			list.push(newItem);
-
 			//Setting state of the list array
 			this.setState({
 				newItem: "",
@@ -35,15 +34,14 @@ class App extends React.Component {
 	//Deleting an item in Todo list
 	deleteItem(id) {
 		//Getting list array from the object
-		const list = [...this.state.list];
+		var list = [...this.state.list];
 		//Skipping the item with the id given as an argument
 		const updatedList = list.filter(item => item.id !== id);
-
 		//Setting state of the list array
 		this.setState({list: updatedList});
 	}
 
-	//TODO: Comeback here
+	//Update value of this.state.newItem according to the input(string)
 	updateInput(input){
 		this.setState({newItem: input})
 	}
@@ -63,7 +61,7 @@ class App extends React.Component {
 					Add an item...
 					<br />
 					<div className="add-todo-container">
-						<input
+						<input 
 							type="text"
 							className="input-text"
 							placeholder="Write a TODO"
@@ -79,11 +77,24 @@ class App extends React.Component {
 					</div>
 					<div className="list">
 						<ul>
-							<li>
-								<input type="checkbox" className="input-chkbox" />
-								<p className="li-p">Practice React for 1 hour</p>
-								<button className="btn-del">Delete</button>
-							</li>
+
+							{this.state.list.map(item => {
+								return(
+									<li key={item.id}>
+										<input 
+										type="checkbox"
+										name="isDone"
+										className="input-chkbox"
+										//TODO: Implement a function tochange isDone flag in item
+										onChange={() => {}} 
+										/>
+										<p className="li-p">{item.value}</p>
+										<button className="btn-del" onClick={() => this.deleteItem(item.id)}>Delete</button>
+									</li>
+									);
+								})
+							}
+
 						</ul>
 					</div>
 				</div>
