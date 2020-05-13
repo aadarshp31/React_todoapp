@@ -4,7 +4,6 @@
     box-sizing: border-box;
 
     /* CSS variables for colors of buttons */
-    /* --btn-add-bg-color: #0A79DF; */
     --btn-add-bg-color: #0ABDE3;
     --btn-add-hover-bg-color: #0A3D62;
     --btn-del-bg-color: #E8676B;
@@ -13,9 +12,6 @@
 
 body{
     background-color: #2475B0;
-    /* background-color: #0A3D62; */
-    /* background-color: cadetblue; */
-    /* background-color: cadetblue; */
     font-size: 1.2em;
     color: white;
 }
